@@ -4,6 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 import MagnifyingGlass from "../Logos/IconMagnifyingGlass/MagnifyingGlass";
 import Close from "../Logos/IconClose/Close";
 import Person from "../Logos/IconPerson/Person";
+import Cart from "../Logos/IconCart/Cart";
 
 function NavigationBar() {
   let [searchValue, setSearchValue] = useState("");
@@ -56,7 +57,7 @@ function NavigationBar() {
   );
 
   return (
-    <div className="w-full mx-auto flex justify-center my-3 py-3">
+    <div className="w-full mx-auto flex justify-center my-3 py-3 px-3">
       <nav className="w-full flex flex-row justify-between self-center px-3">
         <div className="flex self-center">
           <Link to="/" className="inline-flex">
@@ -82,8 +83,11 @@ function NavigationBar() {
             ) : (
               ""
             )}
-            <div className="ml-2 cursor-pointer">
+            <div className="ml-4 cursor-pointer">
               <Person props={{ fillColor: "black" }} />
+            </div>
+            <div className="ml-4 cursor-pointer">
+              <Cart props={{ fillColor: "black" }} />
             </div>
           </div>
         </ul>
