@@ -1,16 +1,14 @@
-import React from 'react'
-import { Slide } from 'react-slideshow-image';
+import React from "react";
+import { Slide } from "react-slideshow-image";
 
 function Intro() {
   return (
-    <div  className=''>
+    <div className="">
       <Slide>
-        <div className="">
-          
-        </div>
+        <div className="">dsad</div>
       </Slide>
     </div>
-  )
+  );
 }
 
-export default Intro
+export default Intro;
