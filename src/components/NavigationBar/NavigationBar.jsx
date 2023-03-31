@@ -5,34 +5,67 @@ import MagnifyingGlass from "../Logos/IconMagnifyingGlass/MagnifyingGlass";
 import Close from "../Logos/IconClose/Close";
 import Person from "../Logos/IconPerson/Person";
 import Cart from "../Logos/IconCart/Cart";
+import ChevronDown from "../Logos/IconChevronDown/ChevronDown";
+import ChevronUp from "../Logos/IconChevronUp/ChevronUp";
 
 function NavigationBar() {
-  let [searchValue, setSearchValue] = useState("");
+  // let [searchValue, setSearchValue] = useState("");
   let [isOpen, setIsOpen] = useState(false);
+  let [isHover, setIsHover] = useState(false);
+
   const navigationBarItems = [
     {
       id: 1,
       label: "Home",
       url: "/",
+      has_subNavigation: false,
     },
     {
       id: 2,
       label: "About Us",
       url: "/About-Us",
+      has_subNavigation: false,
     },
     {
       id: 3,
       label: "Shop",
       url: "/Shop",
+      has_subNavigation: true,
     },
   ];
+
+  const chevronNavigation = (
+    <span className="flex self-center ml-2">
+      {isHover ? (
+        <ChevronUp
+          props={{ fillColor: "black", width: "12px", height: "12px" }}
+        />
+      ) : (
+        <ChevronDown
+          props={{ fillColor: "black", width: "12px", height: "12px" }}
+        />
+      )}
+    </span>
+  );
+
+  const handleHover = () => {
+    !isHover && setIsHover(true);
+  };
+
+  const handleBlur = () => {
+    isHover && setIsHover(false);
+  };
 
   const navigationBarItem = navigationBarItems.map((item) => (
     <li
       key={item.id}
       className="mr-7 inline-flex items-center text-md lg:text-[15px] font-medium text-slate-700 dark:text-slate-300 py-2.5 px-4 xl:px-5 rounded-full hover:text-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+      onMouseEnter={handleHover}
+      onMouseLeave={handleBlur}
     >
-      <Link to={item.url}>{item.label}</Link>
+      <Link to={item.url} className={item.has_subNavigation && "inline-flex"}>
+        {item.label} {item.has_subNavigation ? chevronNavigation : ""}
+      </Link>
     </li>
   ));
 
