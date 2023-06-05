@@ -23,13 +23,13 @@ function NavigationBar() {
     {
       id: 2,
       label: "About Us",
-      url: "/About-Us",
+      url: "/aboutus",
       has_subNavigation: false,
     },
     {
       id: 3,
       label: "Shop",
-      url: "/Shop",
+      url: "/shop",
       has_subNavigation: true,
     },
   ];
