@@ -9,11 +9,12 @@ import ChevronDown from "../Logos/IconChevronDown/ChevronDown";
 import ChevronUp from "../Logos/IconChevronUp/ChevronUp";
 import SubNavigation from "../SubNavigation/SubNavigation";
 
+import "./NavigationBar.css";
+
 function NavigationBar() {
   // let [searchValue, setSearchValue] = useState("");
   let [isOpen, setIsOpen] = useState(false);
   let [isHasSubNavigation, setIsHasSubNavigation] = useState(false);
-  let [isHover, setIsHover] = useState(false);
 
   const navigationBarItems = [
     {
@@ -57,48 +58,27 @@ function NavigationBar() {
       ],
     },
   ];
-
-  const chevronNavigation = (
-    <span className="flex self-center ml-2">
-      {isHover ? (
-        <ChevronUp
-          props={{ fillColor: "black", width: "12px", height: "12px" }}
-        />
-      ) : (
-        <ChevronDown
-          props={{ fillColor: "black", width: "12px", height: "12px" }}
-        />
-      )}
-    </span>
-  );
-  const handleHover = () => {
-    !isHover && setIsHover(true);
-  };
-
-  const handleBlur = () => {
-    isHover && setIsHover(false);
-  };
-  const subNavigation = (isHoverSubNavigation, isSubNavigation) => {
-    if (isHoverSubNavigation && isSubNavigation) {
-    }
-  };
-
-  const navigationBarItem = navigationBarItems.map((item) => (
-    <div key={item.id}>
-      <li
-        className="mr-7 relative inline-flex items-center text-md lg:text-[15px] font-medium text-slate-700 dark:text-slate-300 py-2.5 px-4 xl:px-5 rounded-full hover:text-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 dark:hover:text-slate-200"
-        onMouseEnter={handleHover}
-        onMouseLeave={handleBlur}
-      >
-        <Link
-          to={item.url}
-          className={item.has_subNavigation ? "inline-flex" : "flex"}
-        >
-          {item.label} {item.has_subNavigation ? chevronNavigation : ""}
-        </Link>
-      </li>
-    </div>
-  ));
+  const navigationBarItem = navigationBarItems.map((item) => {
+    return (
+      <div key={item.id}>
+        <li className="menuItem mr-7 relative inline-flex items-center text-md lg:text-[15px] font-medium text-slate-700 dark:text-slate-300 py-2.5 px-4 xl:px-5 rounded-full hover:text-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 dark:hover:text-slate-200">
+          <Link
+            to={item.url}
+            className={item.has_subNavigation ? "inline-flex" : "flex"}
+          >
+            {item.label}
+            {item.has_subNavigation && (
+              <span className="flex self-center ml-2">
+                <ChevronDown
+                  props={{ fillColor: "black", width: "12px", height: "12px" }}
+                />
+              </span>
+            )}
+          </Link>
+        </li>
+      </div>
+    );
+  });
 
   const handleOpenSearchBar = () => {
     !isOpen ? setIsOpen(true) : setIsOpen(false);
