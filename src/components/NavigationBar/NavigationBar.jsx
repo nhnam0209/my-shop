@@ -7,10 +7,12 @@ import Person from "../Logos/IconPerson/Person";
 import Cart from "../Logos/IconCart/Cart";
 import ChevronDown from "../Logos/IconChevronDown/ChevronDown";
 import ChevronUp from "../Logos/IconChevronUp/ChevronUp";
+import SubNavigation from "../SubNavigation/SubNavigation";
 
 function NavigationBar() {
   // let [searchValue, setSearchValue] = useState("");
   let [isOpen, setIsOpen] = useState(false);
+  let [isHasSubNavigation, setIsHasSubNavigation] = useState(false);
   let [isHover, setIsHover] = useState(false);
 
   const navigationBarItems = [
@@ -31,6 +33,28 @@ function NavigationBar() {
       label: "Shop",
       url: "/shop",
       has_subNavigation: true,
+      sub_navigation_data: [
+        {
+          id: 1,
+          label: "Jacket",
+          url: "/",
+        },
+        {
+          id: 2,
+          label: "T-Shirt",
+          url: "/",
+        },
+        {
+          id: 1,
+          label: "Jeans",
+          url: "/",
+        },
+        {
+          id: 1,
+          label: "Shorts",
+          url: "/",
+        },
+      ],
     },
   ];
 
@@ -47,7 +71,6 @@ function NavigationBar() {
       )}
     </span>
   );
-
   const handleHover = () => {
     !isHover && setIsHover(true);
   };
@@ -55,18 +78,26 @@ function NavigationBar() {
   const handleBlur = () => {
     isHover && setIsHover(false);
   };
+  const subNavigation = (isHoverSubNavigation, isSubNavigation) => {
+    if (isHoverSubNavigation && isSubNavigation) {
+    }
+  };
 
   const navigationBarItem = navigationBarItems.map((item) => (
-    <li
-      key={item.id}
-      className="mr-7 inline-flex items-center text-md lg:text-[15px] font-medium text-slate-700 dark:text-slate-300 py-2.5 px-4 xl:px-5 rounded-full hover:text-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 dark:hover:text-slate-200"
-      onMouseEnter={handleHover}
-      onMouseLeave={handleBlur}
-    >
-      <Link to={item.url} className={item.has_subNavigation && "inline-flex"}>
-        {item.label} {item.has_subNavigation ? chevronNavigation : ""}
-      </Link>
-    </li>
+    <div key={item.id}>
+      <li
+        className="mr-7 relative inline-flex items-center text-md lg:text-[15px] font-medium text-slate-700 dark:text-slate-300 py-2.5 px-4 xl:px-5 rounded-full hover:text-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+        onMouseEnter={handleHover}
+        onMouseLeave={handleBlur}
+      >
+        <Link
+          to={item.url}
+          className={item.has_subNavigation ? "inline-flex" : "flex"}
+        >
+          {item.label} {item.has_subNavigation ? chevronNavigation : ""}
+        </Link>
+      </li>
+    </div>
   ));
 
   const handleOpenSearchBar = () => {
