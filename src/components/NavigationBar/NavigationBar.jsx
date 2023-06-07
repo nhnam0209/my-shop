@@ -1,21 +1,18 @@
 import React from "react";
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import MagnifyingGlass from "../Logos/IconMagnifyingGlass/MagnifyingGlass";
 import Close from "../Logos/IconClose/Close";
 import Person from "../Logos/IconPerson/Person";
 import Cart from "../Logos/IconCart/Cart";
 import ChevronDown from "../Logos/IconChevronDown/ChevronDown";
-import ChevronUp from "../Logos/IconChevronUp/ChevronUp";
-import SubNavigation from "../SubNavigation/SubNavigation";
 
 import "./NavigationBar.css";
+import SubNavigation from "../SubNavigation/SubNavigation";
 
 function NavigationBar() {
   // let [searchValue, setSearchValue] = useState("");
   let [isOpen, setIsOpen] = useState(false);
-  let [isHasSubNavigation, setIsHasSubNavigation] = useState(false);
-
   const navigationBarItems = [
     {
       id: 1,
@@ -38,30 +35,26 @@ function NavigationBar() {
         {
           id: 1,
           label: "Jacket",
-          url: "/",
         },
         {
           id: 2,
           label: "T-Shirt",
-          url: "/",
         },
         {
-          id: 1,
+          id: 3,
           label: "Jeans",
-          url: "/",
         },
         {
-          id: 1,
+          id: 4,
           label: "Shorts",
-          url: "/",
         },
       ],
     },
   ];
   const navigationBarItem = navigationBarItems.map((item) => {
     return (
-      <div key={item.id}>
-        <li className="menuItem mr-7 relative inline-flex items-center text-md lg:text-[15px] font-medium text-slate-700 dark:text-slate-300 py-2.5 px-4 xl:px-5 rounded-full hover:text-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 dark:hover:text-slate-200">
+      <div className="menuItem" key={item.id}>
+        <li className=" mr-7 relative inline-flex items-center text-md lg:text-[15px] font-medium text-slate-700 dark:text-slate-300 py-2.5 px-4 xl:px-5 rounded-full hover:text-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 dark:hover:text-slate-200">
           <Link
             to={item.url}
             className={item.has_subNavigation ? "inline-flex" : "flex"}
@@ -76,6 +69,11 @@ function NavigationBar() {
             )}
           </Link>
         </li>
+        <div className="subMenuItem absolute">
+          {item.has_subNavigation && (
+            <SubNavigation props={{ data: item.sub_navigation_data }} />
+          )}
+        </div>
       </div>
     );
   });

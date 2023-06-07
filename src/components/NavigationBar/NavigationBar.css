@@ -1,3 +1,12 @@
+.subMenuItem {
+    display: none;
+}
+.menuItem:hover {
+    .subMenuItem {
+        display: block;
+    }
+}
+
 .menuItem:hover svg {
     transform: rotate(180deg)
 }

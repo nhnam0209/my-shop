@@ -8,6 +8,8 @@ import ErrorPage from "./pages/ErrorPage";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
 import ContactUs from "./pages/ContactUs";
+import ProductList from "./pages/Product/ProductList";
+import Product from "./pages/Product/Product";
 
 function App() {
   return (
@@ -30,6 +32,16 @@ function App() {
           errorElement={<ErrorPage />}
         />
         <Route path="shop" element={<Shop />} errorElement={<ErrorPage />} />
+        <Route
+          path="shop/:label"
+          element={<ProductList />}
+          errorElement={<ErrorPage />}
+        />
+        <Route
+          path="shop/:label/:id"
+          element={<Product />}
+          errorElement={<ErrorPage />}
+        />
         <Route path="cart" element={<Cart />} errorElement={<ErrorPage />} />
         <Route
           path="contact"
