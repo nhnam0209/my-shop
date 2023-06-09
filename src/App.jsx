@@ -6,7 +6,7 @@ import Cart from "./pages/Cart";
 import Home from "./pages";
 import ErrorPage from "./pages/ErrorPage";
 import Footer from "./components/Footer/Footer";
-import "./App.css";
+import "./App.scss";
 import ContactUs from "./pages/ContactUs";
 import ProductList from "./pages/Product/ProductList";
 import Product from "./pages/Product/Product";
