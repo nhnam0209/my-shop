@@ -10,6 +10,7 @@ import "./App.scss";
 import ContactUs from "./pages/ContactUs";
 import ProductList from "./pages/Product/ProductList";
 import Product from "./pages/Product/Product";
+import ContextIndex from "./contexts";
 
 function App() {
   return (
@@ -17,38 +18,41 @@ function App() {
       <header className="">
         <NavigationBar />
       </header>
-      <Routes>
-        <Route
-          path="*"
-          errorElement={<ErrorPage />}
-          action={() => {
-            throw new Response("Not Found", { status: 404 });
-          }}
-        />
-        <Route path="/" element={<Home />} errorElement={<ErrorPage />} />
-        <Route
-          path="aboutus"
-          element={<AboutUs />}
-          errorElement={<ErrorPage />}
-        />
-        <Route path="shop" element={<Shop />} errorElement={<ErrorPage />} />
-        <Route
-          path="shop/:label"
-          element={<ProductList />}
-          errorElement={<ErrorPage />}
-        />
-        <Route
-          path="shop/:label/:id"
-          element={<Product />}
-          errorElement={<ErrorPage />}
-        />
-        <Route path="cart" element={<Cart />} errorElement={<ErrorPage />} />
-        <Route
-          path="contact"
-          element={<ContactUs />}
-          errorElement={<ErrorPage />}
-        />
-      </Routes>
+      <ContextIndex>
+        <Routes>
+          <Route
+            path="*"
+            errorElement={<ErrorPage />}
+            action={() => {
+              throw new Response("Not Found", { status: 404 });
+            }}
+          />
+          <Route path="/" element={<Home />} errorElement={<ErrorPage />} />
+          <Route
+            path="aboutus"
+            element={<AboutUs />}
+            errorElement={<ErrorPage />}
+          />
+          <Route path="shop" element={<Shop />} errorElement={<ErrorPage />} />
+          <Route
+            path="shop/:label"
+            element={<ProductList />}
+            errorElement={<ErrorPage />}
+          />
+          <Route
+            path="shop/:label/:id"
+            element={<Product />}
+            errorElement={<ErrorPage />}
+          />
+          <Route path="cart" element={<Cart />} errorElement={<ErrorPage />} />
+          <Route
+            path="contact"
+            element={<ContactUs />}
+            errorElement={<ErrorPage />}
+          />
+        </Routes>
+      </ContextIndex>
+
       <footer>
         <Footer />
       </footer>

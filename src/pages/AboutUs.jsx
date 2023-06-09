@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { WidthContext } from "../contexts";
 
 function AboutUs() {
-  return (
-    <div>About Us</div>
-  )
+  const width = useContext(WidthContext);
+  return <div>About Us</div>;
 }
 
-export default AboutUs
+export default AboutUs;

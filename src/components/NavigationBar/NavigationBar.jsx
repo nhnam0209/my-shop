@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import MagnifyingGlass from "../Logos/IconMagnifyingGlass/MagnifyingGlass";
 import Close from "../Logos/IconClose/Close";
 import Person from "../Logos/IconPerson/Person";
 import Cart from "../Logos/IconCart/Cart";
 import ChevronDown from "../Logos/IconChevronDown/ChevronDown";
-
 import "./NavigationBar.css";
 import SubNavigation from "../SubNavigation/SubNavigation";
+import { WidthContext } from "../../contexts";
 
-function NavigationBar() {
+function NavigationBar({ props }) {
   // let [searchValue, setSearchValue] = useState("");
   let [isOpen, setIsOpen] = useState(false);
+  const width = useContext(WidthContext);
   const navigationBarItems = [
     {
       id: 1,
@@ -98,6 +99,8 @@ function NavigationBar() {
     </form>
   );
 
+  const navigationBarMobile = () => {};
+
   return (
     <div className="w-full mx-auto flex justify-center my-3 py-3 px-3">
       <nav className="w-full flex flex-row justify-between self-center px-3">
@@ -110,6 +113,7 @@ function NavigationBar() {
             />
           </Link>
         </div>
+
         <ul className="flex flex-row mx-5 text-xl items-center self-center">
           {isOpen ? searchBar : navigationBarItem}
         </ul>
