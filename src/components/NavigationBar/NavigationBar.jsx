@@ -9,6 +9,7 @@ import ChevronDown from "../Logos/IconChevronDown/ChevronDown";
 import "./NavigationBar.css";
 import SubNavigation from "../SubNavigation/SubNavigation";
 import { WidthContext } from "../../contexts";
+import Hamburger from "../Logos/IconHamburger/Hamburger";
 
 function NavigationBar({ props }) {
   // let [searchValue, setSearchValue] = useState("");
@@ -99,9 +100,7 @@ function NavigationBar({ props }) {
     </form>
   );
 
-  const navigationBarMobile = () => {};
-
-  return (
+  const navigationBarDesktop = (
     <div className="w-full mx-auto flex justify-center my-3 py-3 px-3">
       <nav className="w-full flex flex-row justify-between self-center px-3">
         <div className="flex self-center">
@@ -141,6 +140,61 @@ function NavigationBar({ props }) {
       <Outlet />
     </div>
   );
+
+  const navigationbarMobile = (
+    <div className="w-full mx-auto flex justify-center my-3 py-3 px-3">
+      <nav className="w-full flex flex-row justify-between self-center px-3">
+        <div className="flex self-center">
+          <Link to="/" className="inline-flex">
+            <img
+              src="/logo512.png"
+              alt="logo company"
+              className="h-10 flex self-center items-center"
+            />
+          </Link>
+        </div>
+        <div className="relative right-0 ">
+          <Hamburger></Hamburger>
+          <div className="absolute py-5">
+            <ul className="flex self-center">
+              <div className="inline-flex ">
+                {!isOpen ? (
+                  <li
+                    className="cursor-pointer flex self-center"
+                    onClick={handleOpenSearchBar}
+                  >
+                    <MagnifyingGlass props={{ fillColor: "black" }} />
+                  </li>
+                ) : (
+                  ""
+                )}
+                <div className="ml-4 cursor-pointer">
+                  <Person props={{ fillColor: "black" }} />
+                </div>
+                <div className="ml-4 cursor-pointer">
+                  <Cart props={{ fillColor: "black" }} />
+                </div>
+              </div>
+            </ul>
+            <ul className="flex flex-col mx-5 text-xl items-center self-center">
+              {isOpen ? searchBar : navigationBarItem}
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <Outlet />
+    </div>
+  );
+
+  const navigationBar = () => {
+    if (width < 1024) {
+      return navigationbarMobile;
+    } else {
+      return navigationBarDesktop;
+    }
+  };
+
+  return navigationBar();
 }
 
 export default NavigationBar;

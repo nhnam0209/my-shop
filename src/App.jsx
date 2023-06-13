@@ -1,4 +1,5 @@
 import NavigationBar from "./components/NavigationBar/NavigationBar";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Shop from "./pages/Shop";
 import AboutUs from "./pages/AboutUs";
@@ -10,52 +11,33 @@ import "./App.scss";
 import ContactUs from "./pages/ContactUs";
 import ProductList from "./pages/Product/ProductList";
 import Product from "./pages/Product/Product";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 import ContextIndex from "./contexts";
 
 function App() {
   return (
     <div className="App">
-      <header className="">
-        <NavigationBar />
-      </header>
       <ContextIndex>
+        <header className="">
+          <NavigationBar />
+        </header>
         <Routes>
-          <Route
-            path="*"
-            errorElement={<ErrorPage />}
-            action={() => {
-              throw new Response("Not Found", { status: 404 });
-            }}
-          />
-          <Route path="/" element={<Home />} errorElement={<ErrorPage />} />
-          <Route
-            path="aboutus"
-            element={<AboutUs />}
-            errorElement={<ErrorPage />}
-          />
-          <Route path="shop" element={<Shop />} errorElement={<ErrorPage />} />
-          <Route
-            path="shop/:label"
-            element={<ProductList />}
-            errorElement={<ErrorPage />}
-          />
-          <Route
-            path="shop/:label/:id"
-            element={<Product />}
-            errorElement={<ErrorPage />}
-          />
-          <Route path="cart" element={<Cart />} errorElement={<ErrorPage />} />
-          <Route
-            path="contact"
-            element={<ContactUs />}
-            errorElement={<ErrorPage />}
-          />
+          <Route path="*" element={<ErrorPage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="aboutus" element={<AboutUs />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="shop" element={<Shop />} />
+          <Route path="shop/:label" element={<ProductList />} />
+          <Route path="shop/:label/:id" element={<Product />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="contact" element={<ContactUs />} />
         </Routes>
+        <footer>
+          <Footer />
+        </footer>
       </ContextIndex>
-
-      <footer>
-        <Footer />
-      </footer>
     </div>
   );
 }
