@@ -1,12 +1,12 @@
-.subMenuItem {
+.sub_menu_item {
     display: none;
 }
-.menuItem:hover {
-    .subMenuItem {
-        display: block;
-    }
+
+.menu_item:hover .sub_menu_item {
+    display: block;
+    z-index: 99999 !important;
 }
 
-.menuItem:hover svg {
+.menu_item:hover svg {
     transform: rotate(180deg)
 }

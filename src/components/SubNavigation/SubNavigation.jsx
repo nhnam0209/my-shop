@@ -18,7 +18,7 @@ function SubNavigation({ props }) {
   const subNavigation = () => {
     return (
       <div>
-        <div className="border p-3 flex-col cursor-pointer flex">
+        <div className="border p-3 flex-col cursor-pointer flex ">
           {subNavigationItem}
         </div>
       </div>

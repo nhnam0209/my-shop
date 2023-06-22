@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <ContextIndex>
-        <header className="">
+        <header>
           <NavigationBar />
         </header>
         <Routes>

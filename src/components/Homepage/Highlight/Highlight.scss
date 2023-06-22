@@ -1,0 +1,23 @@
+$animationDelay: 1;
+
+.highlight_container {
+    animation-name: fade-in;
+    animation-fill-mode: both;
+    animation-duration: 2s;
+}
+
+@for $i from 1 through 15 {
+    .highlight_container:nth-of-type(#{$i}) {
+        animation-delay: #{0.3+($i)/30}s;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
