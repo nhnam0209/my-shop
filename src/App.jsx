@@ -22,18 +22,21 @@ function App() {
         <header>
           <NavigationBar />
         </header>
-        <Routes>
-          <Route path="*" element={<ErrorPage />} />
-          <Route path="/" element={<Home />} />
-          <Route path="aboutus" element={<AboutUs />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="shop" element={<Shop />} />
-          <Route path="shop/:label" element={<ProductList />} />
-          <Route path="shop/:label/:id" element={<Product />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="contact" element={<ContactUs />} />
-        </Routes>
+        <body>
+          <Routes>
+            <Route path="*" element={<ErrorPage />} />
+            <Route path="/" element={<Home />} />
+            <Route path="aboutus" element={<AboutUs />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="shop" element={<Shop />} />
+            <Route path="shop/:label" element={<ProductList />} />
+            <Route path="shop/:label/:id" element={<Product />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="contact" element={<ContactUs />} />
+          </Routes>
+        </body>
+
         <footer>
           <Footer />
         </footer>

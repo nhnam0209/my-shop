@@ -9,12 +9,11 @@ import ChevronDown from "../Logos/IconChevronDown/ChevronDown";
 import "./NavigationBar.css";
 import SubNavigation from "../SubNavigation/SubNavigation";
 import { WidthContext } from "../../contexts";
-import Hamburger from "../Logos/IconHamburger/Hamburger";
+import NavigationBarMobile from "./NavigationBarMobile/NavigationBarMobile";
 
-function NavigationBar({ props }) {
+function NavigationBar() {
   // let [searchValue, setSearchValue] = useState("");
   let [isOpen, setIsOpen] = useState(false);
-  let [isOpenNavigation, setIsOpenNavigation] = useState(false);
 
   const width = useContext(WidthContext);
   const navigationBarItems = [
@@ -33,29 +32,64 @@ function NavigationBar({ props }) {
     {
       id: 3,
       label: "Shop",
-      url: "/shop",
       has_subNavigation: true,
       sub_navigation_data: [
         {
           id: 1,
-          label: "Jacket",
+          title: "Plant And Garden",
+          slug: "Plant",
+          data: [
+            {
+              id: 1,
+              label: "Garden Kit",
+              url: "garden_kit",
+            },
+            {
+              id: 2,
+              label: "Pot",
+              url: "pot",
+            },
+            {
+              id: 3,
+              label: "Indoor Tree",
+              url: "indoor_tree",
+            },
+            {
+              id: 4,
+              label: "Outdoor Tree",
+              url: "outdoor_tree",
+            },
+          ],
         },
         {
           id: 2,
-          label: "T-Shirt",
-        },
-        {
-          id: 3,
-          label: "Jeans",
-        },
-        {
-          id: 4,
-          label: "Shorts",
+          title: "Aquarium And Fish Tank",
+          slug: "Aquarium",
+          data: [
+            {
+              id: 1,
+              label: "Jacket",
+            },
+            {
+              id: 2,
+              url: "/shop",
+              label: "T-Shirt",
+            },
+            {
+              id: 3,
+              label: "Jeans",
+            },
+            {
+              id: 4,
+              label: "Shorts",
+            },
+          ],
         },
       ],
     },
   ];
   const navigationBarItem = navigationBarItems.map((item) => {
+    console.log(item);
     return (
       <div className="menu_item" key={item.id}>
         <li className=" z-50 mr-7 uppercase relative inline-flex items-center text-md lg:text-[15px] font-bold text-slate-700 dark:text-slate-300 py-2.5 px-4 xl:px-5 rounded-full hover:text-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 dark:hover:text-slate-200">
@@ -84,10 +118,6 @@ function NavigationBar({ props }) {
 
   const handleOpenSearchBar = () => {
     !isOpen ? setIsOpen(true) : setIsOpen(false);
-  };
-
-  const handleOpenNavigationMobile = () => {
-    !isOpenNavigation ? setIsOpenNavigation(true) : setIsOpenNavigation(false);
   };
 
   const searchBar = (
@@ -147,60 +177,9 @@ function NavigationBar({ props }) {
     </div>
   );
 
-  const navigationbarMobile = (
-    <div className="w-full mx-auto flex justify-center my-3 py-3 px-3">
-      <nav className="w-full flex flex-row justify-between self-center px-3">
-        <div className="flex self-center">
-          <Link to="/" className="inline-flex">
-            <img
-              src="/logo.png"
-              alt="logo company"
-              className="h-24 flex self-center items-center"
-            />
-          </Link>
-        </div>
-        <div className="relative right-0 flex">
-          <div onClick={handleOpenNavigationMobile} className="self-center">
-            <Hamburger />
-          </div>
-          {isOpenNavigation ? (
-            <div className="absolute py-5 px-5 right-0 bg-white border z-50 h-screen">
-              <ul className="flex flex-col mx-5 text-sm items-center self-center w-full">
-                {isOpen ? searchBar : navigationBarItem}
-              </ul>
-              <ul className="flex self-center w-full justify-center">
-                <div className="inline-flex">
-                  {!isOpen ? (
-                    <li
-                      className="cursor-pointer flex self-center"
-                      onClick={handleOpenSearchBar}
-                    >
-                      <MagnifyingGlass props={{ fillColor: "black" }} />
-                    </li>
-                  ) : (
-                    ""
-                  )}
-                  <div className="ml-4 cursor-pointer">
-                    <Person props={{ fillColor: "black" }} />
-                  </div>
-                  <div className="ml-4 cursor-pointer">
-                    <Cart props={{ fillColor: "black" }} />
-                  </div>
-                </div>
-              </ul>
-            </div>
-          ) : (
-            ""
-          )}
-        </div>
-      </nav>
-      <Outlet />
-    </div>
-  );
-
   const navigationBar = () => {
     if (width < 1024) {
-      return navigationbarMobile;
+      return <NavigationBarMobile />;
     } else {
       return navigationBarDesktop;
     }
