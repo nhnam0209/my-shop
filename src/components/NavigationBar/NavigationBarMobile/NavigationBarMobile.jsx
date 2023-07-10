@@ -67,20 +67,23 @@ function NavigationBarMobile() {
           data: [
             {
               id: 1,
-              label: "Jacket",
+              label: "Freshwater Fish",
+              url: "freshwater_fish",
             },
             {
               id: 2,
-              url: "/shop",
-              label: "T-Shirt",
+              label: "Saltwater Fish",
+              url: "saltwater_fish",
             },
             {
               id: 3,
-              label: "Jeans",
+              label: "Aquarium plant",
+              url: "aquarium_plant",
             },
             {
               id: 4,
-              label: "Shorts",
+              label: "Fish Tank",
+              url: "fish_tank",
             },
           ],
         },

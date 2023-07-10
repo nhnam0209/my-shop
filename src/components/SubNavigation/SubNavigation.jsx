@@ -51,11 +51,11 @@ function SubNavigation({ props }) {
 
   const subNavigation = () => {
     return (
-      <div className="sub_menu_item_mobile">
-        <div className="p-3 flex-col cursor-pointer flex ">
+      <>
+        <div className="p-3 flex-col cursor-pointer flex w-full">
           {subNavigationItem}
         </div>
-      </div>
+      </>
     );
   };
   return subNavigation();

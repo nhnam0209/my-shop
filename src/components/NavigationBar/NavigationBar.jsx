@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MagnifyingGlass from "../Logos/IconMagnifyingGlass/MagnifyingGlass";
 import Close from "../Logos/IconClose/Close";
 import Person from "../Logos/IconPerson/Person";
@@ -68,20 +68,23 @@ function NavigationBar() {
           data: [
             {
               id: 1,
-              label: "Jacket",
+              label: "Freshwater Fish",
+              url: "freshwater_fish",
             },
             {
               id: 2,
-              url: "/shop",
-              label: "T-Shirt",
+              label: "Saltwater Fish",
+              url: "saltwater_fish",
             },
             {
               id: 3,
-              label: "Jeans",
+              label: "Aquarium plant",
+              url: "aquarium_plant",
             },
             {
               id: 4,
-              label: "Shorts",
+              label: "Fish Tank",
+              url: "fish_tank",
             },
           ],
         },
@@ -89,7 +92,6 @@ function NavigationBar() {
     },
   ];
   const navigationBarItem = navigationBarItems.map((item) => {
-    console.log(item);
     return (
       <div className="menu_item" key={item.id}>
         <li className=" z-50 mr-7 uppercase relative inline-flex items-center text-md lg:text-[15px] font-bold text-slate-700 dark:text-slate-300 py-2.5 px-4 xl:px-5 rounded-full hover:text-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 dark:hover:text-slate-200">
@@ -173,7 +175,6 @@ function NavigationBar() {
           </div>
         </ul>
       </nav>
-      <Outlet />
     </div>
   );
 
