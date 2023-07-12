@@ -1,6 +1,8 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+function Product({ props }) {
+  let { id } = useParams();
 
-function Product() {
   return (
     <div className="bg-gray-100">
       <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
@@ -14,8 +16,14 @@ function Product() {
             <p className="mt-1 text-2xl font-semibold text-gray-900">$51.18</p>
           </div>
         </div>
-        <button>Add to Cart</button>
-        <button>Buy</button>
+        <div>
+          <button className="p-4 bg-primary hover:bg-secondary text-white rounded-md ">
+            Add to Cart
+          </button>
+          <button className="p-4 outline outline-primary hover:outline-secondary text-primary m-3 rounded-md">
+            Buy
+          </button>
+        </div>
       </div>
     </div>
   );

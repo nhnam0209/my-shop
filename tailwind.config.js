@@ -10,6 +10,13 @@ module.exports = {
         white_greenhouse: "#F7F9FB",
         green: "#687864",
       },
+      outlineColor: {
+        primary: "#31708E",
+        secondary: "#5085A5",
+        thirdary: "#8FC1E3",
+        white_greenhouse: "#F7F9FB",
+        green: "#687864",
+      },
     },
   },
   plugins: [],
