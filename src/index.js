@@ -7,6 +7,8 @@ import i18next from "i18next";
 import App from "./App";
 import common_en from "./translations/en/common";
 import common_vi from "./translations/vi/common";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 i18next.init({
   interpolation: {
@@ -26,10 +28,12 @@ i18next.init({
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <I18nextProvider i18n={i18next}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </I18nextProvider>
+    <Provider store={store}>
+      <I18nextProvider i18n={i18next}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </I18nextProvider>
+    </Provider>
   </React.StrictMode>
 );

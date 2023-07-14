@@ -167,10 +167,14 @@ function NavigationBar() {
               ""
             )}
             <div className="ml-4 cursor-pointer">
-              <Person props={{ fillColor: "black" }} />
+              <Link to="/login">
+                <Person props={{ fillColor: "black" }} />
+              </Link>
             </div>
             <div className="ml-4 cursor-pointer">
-              <Cart props={{ fillColor: "black" }} />
+              <Link to="/cart">
+                <Cart props={{ fillColor: "black" }} />
+              </Link>
             </div>
           </div>
         </ul>

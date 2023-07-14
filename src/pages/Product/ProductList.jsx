@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import SideBar from "./../../components/SideBar/SideBar";
 import ProductCard from "./../../components/common/ProductCard/ProductCard";
 import fish_test from "../../assets/img/betta_fish.jpg";
+import { WidthContext } from "../../contexts";
+
 function ProductList() {
+  const width = useContext(WidthContext);
+
   const data = [
     {
       id: "1",
@@ -51,13 +55,19 @@ function ProductList() {
   });
 
   return (
-    <div className="relative h-screen">
-      <div className="grid grid-cols-12">
-        <div className="col-span-2">
-          <SideBar />
-        </div>
-        <div className="col-span-10 relative block border h-screen mx-4 w-full">
-          <div className="m-4 flex flex-wrap">{productItem}</div>
+    <div className="relative  h-full">
+      <div className="grid lg:grid-cols-12 grid-cols-1">
+        {width < 1024 ? (
+          ""
+        ) : (
+          <div className="lg:col-span-2 border">
+            <SideBar />
+          </div>
+        )}
+        <div className="lg:col-span-10 border relative block h-full lg:mx-4 w-full">
+          <div className="lg:m-4 flex flex-wrap justify-center lg:justify-start w-full">
+            {productItem}
+          </div>
         </div>
       </div>
     </div>
