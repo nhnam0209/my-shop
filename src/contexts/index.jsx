@@ -8,11 +8,7 @@ const ContextIndex = (props) => {
     window.addEventListener("resize", handleWindowResize);
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
-  return (
-    <WidthContext.Provider value={width}>
-      {props.children}
-    </WidthContext.Provider>
-  );
+  return <WidthContext.Provider value={width}>{props.children}</WidthContext.Provider>;
 };
 
 export default ContextIndex;
